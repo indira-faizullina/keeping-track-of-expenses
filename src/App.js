@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+// import React from 'react'
+import Costs from './components/Costs/Costs'
+import NewCost from './components/NewCost/NewCost'
 
 function App() {
+  const costs = [
+    {
+      id: '1',
+      date: new Date(2022, 2, 17),
+      description: 'Холодильник',
+      amount: 999,
+    },
+    {
+      id: '2',
+      date: new Date(2022, 5, 28),
+      description: 'MacBook',
+      amount: 1300,
+    },
+    {
+      id: '3',
+      date: new Date(2022, 11, 10),
+      description: 'Футболка',
+      amount: 80,
+    },
+  ]
+
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h1', {}, "Let's begin learning React!"),
+  //   React.createElement(Costs, { costs: costs })
+  // )
+  const addNewCostHandler = (cost) => {
+    console.log(cost)
+    console.log('app')
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NewCost onAddNewCost={addNewCostHandler} />
+      <Costs costs={costs} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
