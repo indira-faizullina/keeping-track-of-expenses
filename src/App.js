@@ -1,28 +1,30 @@
-// import React from 'react'
+import React, { useState } from 'react'
 import Costs from './components/Costs/Costs'
 import NewCost from './components/NewCost/NewCost'
 
+const INITIAL_COSTS = [
+  {
+    id: '1',
+    date: new Date(2023, 2, 17),
+    name: 'Холодильник',
+    amount: 999,
+  },
+  {
+    id: '2',
+    date: new Date(2022, 5, 28),
+    name: 'MacBook',
+    amount: 1300,
+  },
+  {
+    id: '3',
+    date: new Date(2022, 11, 10),
+    name: 'Футболка',
+    amount: 80,
+  },
+]
+
 function App() {
-  const costs = [
-    {
-      id: '1',
-      date: new Date(2022, 2, 17),
-      description: 'Холодильник',
-      amount: 999,
-    },
-    {
-      id: '2',
-      date: new Date(2022, 5, 28),
-      description: 'MacBook',
-      amount: 1300,
-    },
-    {
-      id: '3',
-      date: new Date(2022, 11, 10),
-      description: 'Футболка',
-      amount: 80,
-    },
-  ]
+  const [costs, setCosts] = useState(INITIAL_COSTS)
 
   // return React.createElement(
   //   'div',
@@ -31,8 +33,7 @@ function App() {
   //   React.createElement(Costs, { costs: costs })
   // )
   const addNewCostHandler = (cost) => {
-    console.log(cost)
-    console.log('app')
+    setCosts((prevCosts) => [cost, ...prevCosts])
   }
 
   return (
