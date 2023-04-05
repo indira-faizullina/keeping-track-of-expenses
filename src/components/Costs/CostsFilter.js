@@ -9,12 +9,11 @@ function CostsFilter(props) {
   return (
     <div className="costs-filter">
       <div className="costs-filter__control">
-        <label>Просмотреть по году</label>
+        <label>Выбрать год</label>
         <select value={props.year} onChange={changeYearHandler}>
-          <option>2020</option>
-          <option>2021</option>
           <option>2022</option>
           <option>2023</option>
+          <option>2024</option>
         </select>
       </div>
     </div>

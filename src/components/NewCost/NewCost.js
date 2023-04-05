@@ -1,5 +1,6 @@
 import CostForm from './CostForm'
 import './NewCost.css'
+import React, { useState } from 'react'
 
 function NewCost(props) {
   const saveCostDataHandler = (inputCostData) => {
@@ -8,11 +9,24 @@ function NewCost(props) {
       id: Date.now() + Math.random().toString(),
     }
     props.onAddNewCost(costData)
+    setIsFormVisible(false)
   }
 
+  const [isFormVisible, setIsFormVisible] = useState(false)
+
+  const buttonClickHandler = () => setIsFormVisible(true)
+  const cancelFormVisible = () => setIsFormVisible(false)
+
   return (
-    <div className="new-cost">
-      <CostForm onSaveCostData={saveCostDataHandler} />
+    <div className="new-cost card">
+      {!isFormVisible ? (
+        <button onClick={buttonClickHandler}>Добавить новый расход</button>
+      ) : (
+        <CostForm
+          onSaveCostData={saveCostDataHandler}
+          onCancelForm={cancelFormVisible}
+        />
+      )}
     </div>
   )
 }
