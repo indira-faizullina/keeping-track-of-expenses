@@ -5,6 +5,7 @@ function CostForm(props) {
   const [inputName, setInputName] = useState('')
   const [inputAmount, setInputAmount] = useState('')
   const [inputDate, setInputDate] = useState('')
+  const [isInputValid, setIsInputValid] = useState(true)
 
   const nameChangeHandler = (event) => setInputName(event.target.value)
   const amountChangeHandler = (event) => setInputAmount(event.target.value)
@@ -12,11 +13,24 @@ function CostForm(props) {
 
   const submitHandler = (event) => {
     event.preventDefault()
+
+    if (
+      inputName.trim() === '' ||
+      inputAmount.trim() === '' ||
+      inputDate.trim() === ''
+    ) {
+      setIsInputValid(false)
+      return
+    }
+
+    setIsInputValid(true)
+
     const costData = {
       name: inputName,
       amount: inputAmount,
       date: new Date(inputDate),
     }
+
     props.onSaveCostData(costData)
 
     setInputName('')
@@ -27,11 +41,19 @@ function CostForm(props) {
   return (
     <form onSubmit={submitHandler}>
       <div className="new-cost__controls">
-        <div className="new-cost__control">
+        <div
+          className={`new-cost__control ${
+            !isInputValid && inputName === '' ? 'invalid' : ''
+          }`}
+        >
           <label>Название</label>
           <input type="text" value={inputName} onChange={nameChangeHandler} />
         </div>
-        <div className="new-cost__control">
+        <div
+          className={`new-cost__control ${
+            !isInputValid && inputAmount === '' ? 'invalid' : ''
+          }`}
+        >
           <label>Сумма</label>
           <input
             type="number"
@@ -41,7 +63,11 @@ function CostForm(props) {
             onChange={amountChangeHandler}
           />
         </div>
-        <div className="new-cost__control">
+        <div
+          className={`new-cost__control ${
+            !isInputValid && inputDate === '' ? 'invalid' : ''
+          }`}
+        >
           <label>Дата</label>
           <input
             type="date"

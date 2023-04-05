@@ -24,3 +24,12 @@
 .new-cost__actions {
   text-align: left;
 }
+
+.new-cost__control.invalid input {
+  outline: 1px solid #aa1a36;
+  background-color: #c989935d;
+}
+
+.new-cost__control.invalid label {
+  color: #aa1a36;
+}

@@ -1,4 +1,5 @@
 import Diagram from '../Diagram/Diagram'
+import './CostsDiagram.css'
 
 function CostsDiagram(props) {
   const diagramDataSets = [
@@ -22,7 +23,7 @@ function CostsDiagram(props) {
       Number(diagramDataSets[costMonth].value) + Number(cost.amount)
   }
 
-  return <Diagram dataSets={diagramDataSets} />
+  return <Diagram className="diagram" dataSets={diagramDataSets} />
 }
 
 export default CostsDiagram

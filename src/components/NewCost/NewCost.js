@@ -3,22 +3,25 @@ import './NewCost.css'
 import React, { useState } from 'react'
 
 function NewCost(props) {
+  const [isFormVisible, setIsFormVisible] = useState(false)
+
   const saveCostDataHandler = (inputCostData) => {
     const costData = {
       ...inputCostData,
       id: Date.now() + Math.random().toString(),
     }
+
     props.onAddNewCost(costData)
     setIsFormVisible(false)
   }
 
-  const [isFormVisible, setIsFormVisible] = useState(false)
-
   const buttonClickHandler = () => setIsFormVisible(true)
-  const cancelFormVisible = () => setIsFormVisible(false)
+  const cancelFormVisible = () => {
+    setIsFormVisible(false)
+  }
 
   return (
-    <div className="new-cost card">
+    <div className="new-cost">
       {!isFormVisible ? (
         <button onClick={buttonClickHandler}>Добавить новый расход</button>
       ) : (
@@ -27,6 +30,7 @@ function NewCost(props) {
           onCancelForm={cancelFormVisible}
         />
       )}
+      {/* {!isInputValid && <p style={{ color: '#bb1a36' }}>Заполните все поля!</p>} */}
     </div>
   )
 }
