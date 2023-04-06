@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './CostForm.css'
+import styles from './CostForm.module.css'
 
 function CostForm(props) {
   const [inputName, setInputName] = useState('')
@@ -40,18 +40,18 @@ function CostForm(props) {
 
   return (
     <form onSubmit={submitHandler}>
-      <div className="new-cost__controls">
+      <div className={styles['new-cost__controls']}>
         <div
-          className={`new-cost__control ${
-            !isInputValid && inputName === '' ? 'invalid' : ''
+          className={`${styles['new-cost__control']} ${
+            !isInputValid && inputName === '' ? styles.invalid : ''
           }`}
         >
           <label>Название</label>
           <input type="text" value={inputName} onChange={nameChangeHandler} />
         </div>
         <div
-          className={`new-cost__control ${
-            !isInputValid && inputAmount === '' ? 'invalid' : ''
+          className={`${styles['new-cost__control']} ${
+            !isInputValid && inputAmount === '' ? styles.invalid : ''
           }`}
         >
           <label>Сумма</label>
@@ -64,8 +64,8 @@ function CostForm(props) {
           />
         </div>
         <div
-          className={`new-cost__control ${
-            !isInputValid && inputDate === '' ? 'invalid' : ''
+          className={`${styles['new-cost__control']} ${
+            !isInputValid && inputDate === '' ? styles.invalid : ''
           }`}
         >
           <label>Дата</label>

@@ -30,7 +30,6 @@ function NewCost(props) {
           onCancelForm={cancelFormVisible}
         />
       )}
-      {/* {!isInputValid && <p style={{ color: '#bb1a36' }}>Заполните все поля!</p>} */}
     </div>
   )
 }
